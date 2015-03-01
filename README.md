@@ -1,6 +1,6 @@
 # Caruby2go
 
-TODO: Write a gem description
+A Ruby gem that wraps the car2go API
 
 ## Installation
 
