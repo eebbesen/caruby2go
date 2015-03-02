@@ -1,6 +1,8 @@
 # Caruby2go
 
-A Ruby gem that wraps the car2go API
+caruby2go is a gem that exposes [the car2go api](https://code.google.com/p/car2go/wiki/index_v2_1).
+
+For most operations you need to [get your own consumer key from car2go](https://www.car2go.com/en/austin/car2go-apps/).
 
 ## Installation
 
@@ -17,6 +19,11 @@ And then execute:
 Or install it yourself as:
 
     $ gem install caruby2go
+
+## Packaging
+```ruby
+rake build
+```
 
 ## Usage
 

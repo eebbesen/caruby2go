@@ -1,0 +1,35 @@
+require 'minitest/autorun'
+require './lib/caruby2go'
+require 'pry'
+
+class TestCaruby2go < Minitest::Test
+  def setup
+    @caruby2go = Caruby2go.new('testkey', 'MPLS')
+  end
+
+  def test_initialize
+    assert_equal 'testkey', @caruby2go.instance_variable_get(:@consumer_key)
+  end
+
+  def test_build_uri_with_location
+    assert_equal 'https://www.car2go.com/api/v2.1/endpt?loc=MPLS&oauth_consumer_key=testkey&format=json', @caruby2go.send(:build_uri, 'endpt')
+  end
+
+  def test_build_uri_without_location
+    @caruby2go = Caruby2go.new('testkey')
+    assert_equal 'https://www.car2go.com/api/v2.1/endpt?&oauth_consumer_key=testkey&format=json', @caruby2go.send(:build_uri, 'endpt')
+  end
+
+  def test_get_vehicles
+    vehicles_json  = '{{"placemarks":[{"address":"Grand Ave 1600, 55105 St Paul","coordinates":[-93.16789,44.93999,0],"engineType":"CE","exterior":"GOOD","fuel":26,"interior":"GOOD","name":"AB6860","smartPhoneRequired":false,"vin":"AAAAA0AA0AA000000"},{"address":"West Kellogg Boulevard 15, 55102 St Paul","coordinates":[-93.093654,44.943895,0],"engineType":"CE","exterior":"GOOD","fuel":25,"interior":"GOOD","name":"AB6860","smartPhoneRequired":false,"vin":"AAAAA1AA1AA111111"},{"address":"South 5th Street 350, 55415 Minneapolis","coordinates":[-93.265769,44.976851,0],"engineType":"CE","exterior":"GOOD","fuel":24,"interior":"GOOD","name":"AB6860","smartPhoneRequired":false,"vin":"AAAAA2AA2AA222222"}]}'
+
+    mock_file = Minitest::Mock.new
+    mock_file.expect(:read, vehicles_json)
+
+    OpenURI.stub :open_uri, mock_file do
+      @caruby2go.get_vehicles
+    end
+
+    mock_file.verify
+  end
+end
