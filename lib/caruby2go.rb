@@ -1,5 +1,6 @@
 require "caruby2go/version"
 require 'open-uri'
+require 'json'
 
 class Caruby2go
   CAR2GO_URI = 'https://www.car2go.com/api/v2.1'
@@ -9,19 +10,19 @@ class Caruby2go
     @location = location
   end
 
-  def get_gasstations
+  def get_gasstations # placemarks
     issue_get(build_uri('gasstations'))
   end
 
-  def get_locations
-    issue_get(build_uri('locations'))
+  def get_locations # location
+    issue_get(build_uri('locations'), 'location')
   end
 
-  def get_parkingspots
+  def get_parkingspots # placemarks
     issue_get(build_uri('parkingspots'))
   end
 
-  def get_vehicles
+  def get_vehicles # placemarks
     issue_get(build_uri('vehicles'))
   end
 
@@ -32,7 +33,8 @@ class Caruby2go
     "#{CAR2GO_URI}/#{endpoint}?#{loc_part}&oauth_consumer_key=#{@consumer_key}&format=json"
   end
 
-  def issue_get(uri)
-    open(uri).read
+  def issue_get(uri, json_header='placemarks')
+    data = open(uri).read
+    JSON.parse(data)[json_header]
   end
 end

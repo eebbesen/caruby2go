@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'caruby2go'
+# require 'formatter'
+
+key = ARGV[0]
+location = ARGV[1]
+
+if !key
+  puts 'You must supply a customer_key' if !key
+  exit
+end
+
+json = Caruby2go.new(key.chomp, location.chomp).get_vehicles
+puts json.class
+puts json
+# json.each { |vehicle| 
+#   puts '=============================================================='
+#   # puts Formatter.format_vehicle(json.to_json)
+#   puts json.to_json
+# }
+puts '=========================='

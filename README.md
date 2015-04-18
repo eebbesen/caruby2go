@@ -21,13 +21,14 @@ Or install it yourself as:
     $ gem install caruby2go
 
 ## Packaging
-```ruby
-rake build
+```rake build
 ```
+
+build.sh in this project's root will run these commands for you.
 
 ## Usage
 
-TODO: Write usage instructions here
+$ bin/caruby2go <your_car2go_consumer_key> <location_for_which_you_want_data>
 
 ## Contributing
 
