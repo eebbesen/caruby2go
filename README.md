@@ -1,4 +1,4 @@
-# Caruby2go
+# caruby2go
 
 caruby2go is a gem that exposes [the car2go api](https://code.google.com/p/car2go/wiki/index_v2_1).
 
@@ -27,14 +27,13 @@ Or install it yourself as:
 build.sh (in this project's root) will build and install the gem locally.
 
 ## Local usage
-The script requires you to set the CONSUMER_KEY environment variable to your Car2Go consumer key
+The script requires you to set the CONSUMER_KEY environment variable to your car2Go consumer key
 
     $ set CONSUMER_KEY=<your_consumer_key>
     $ bin/caruby2go p kobenhavn
 or 
 
     $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
-
 
 ## Contributing
 
