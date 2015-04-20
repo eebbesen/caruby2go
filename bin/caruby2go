@@ -28,12 +28,14 @@ class Caruby2goScript < Thor
   # this is set using an environment variable
   def require_key
     unless ENV['CONSUMER_KEY']
-      'Set environment variable CONSUMER_KEY to your Car2Go consumer key'
+      puts 'Set environment variable CONSUMER_KEY to your Car2Go consumer key.  For example,'
+      puts '    $ CONSUMER_KEY=mykey ruby bin/caruby2go v twincities'
       exit
     end
   end
 
   def call_api(city=nil)
+    require_key
     pretty_print (Caruby2go.new(ENV['CONSUMER_KEY'], city).send("get_#{caller_locations(1,1)[0].label}".to_sym))
   end
 
