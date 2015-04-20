@@ -1,26 +1,27 @@
 require 'thor'
 require_relative '../lib/caruby2go.rb'
+require 'pry'
 
 class Caruby2goScript < Thor
   RECORD_SEPARATOR = '=============================================================='
   desc 'vehicles CITY', 'get vehicles for CITY'
   def vehicles(city)
-    call_api('vehicles', city)
+    call_api(city)
   end
 
   desc 'locations', 'get Car2Go cities'
   def locations
-    call_api('locations')
+    call_api
   end
 
   desc 'gasstations', 'get gas stations for CITY'
   def gasstations(city)
-    call_api('gasstations', city)
+    call_api(city)
   end
 
   desc 'parkingspots', 'get parking spots for CITY'
   def parkingspots(city)
-    call_api('parkingspots', city)
+    call_api(city)
   end
 
   private 
@@ -32,8 +33,8 @@ class Caruby2goScript < Thor
     end
   end
 
-  def call_api(endpoint, city=nil)
-    pretty_print (Caruby2go.new(ENV['CONSUMER_KEY'], city).send("get_#{endpoint}".to_sym))
+  def call_api(city=nil)
+    pretty_print (Caruby2go.new(ENV['CONSUMER_KEY'], city).send("get_#{caller_locations(1,1)[0].label}".to_sym))
   end
 
   def pretty_print(records)

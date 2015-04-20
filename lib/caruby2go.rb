@@ -1,4 +1,4 @@
-require "caruby2go/version"
+require 'caruby2go/version'
 require 'open-uri'
 require 'json'
 
@@ -27,7 +27,7 @@ class Caruby2go
   end
 
   private
-  
+
   def build_uri(endpoint)
     loc_part = @location ? "loc=#{@location}" : nil
     "#{CAR2GO_URI}/#{endpoint}?#{loc_part}&oauth_consumer_key=#{@consumer_key}&format=json"
