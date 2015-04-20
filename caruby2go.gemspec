@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-remote"
   spec.add_development_dependency "pry-nav"
   spec.add_development_dependency "spy"
+  spec.add_development_dependency "thor"
 end

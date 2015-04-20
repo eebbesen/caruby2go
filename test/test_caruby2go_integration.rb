@@ -4,7 +4,7 @@ require 'spy/integration'
 
 class TestCaruby2goIngegration < Minitest::Test
   def setup
-    @caruby2go = Caruby2go.new(ENV['CUSTOMER_KEY'], 'minneapolis')
+    @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], 'minneapolis')
   end
 
   def test_get_vehicles
@@ -23,7 +23,7 @@ class TestCaruby2goIngegration < Minitest::Test
   end
 
   def test_get_gasstations
-    @caruby2go = Caruby2go.new(ENV['CUSTOMER_KEY'], 'kobenhavn')
+    @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], 'kobenhavn')
     gasstations_json = @caruby2go.get_gasstations
     refute gasstations_json.first['coordinates'].empty?
   end
@@ -35,7 +35,7 @@ class TestCaruby2goIngegration < Minitest::Test
 # 'wien']
 
 #     cities.each do |city|
-#       @caruby2go = Caruby2go.new(ENV['CUSTOMER_KEY'], city)
+#       @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], city)
 #       # puts "#{city}"
 #       payload = @caruby2go.get_gasstations
 #       # puts "#{city}:\n#{payload}"

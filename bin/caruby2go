@@ -1,22 +1,50 @@
-#!/usr/bin/env ruby
+require 'thor'
+require_relative '../lib/caruby2go.rb'
 
-require 'caruby2go'
-# require 'formatter'
+class Caruby2goScript < Thor
+  RECORD_SEPARATOR = '=============================================================='
+  desc 'vehicles CITY', 'get vehicles for CITY'
+  def vehicles(city)
+    call_api('vehicles', city)
+  end
 
-key = ARGV[0]
-location = ARGV[1]
+  desc 'locations', 'get Car2Go cities'
+  def locations
+    call_api('locations')
+  end
 
-if !key
-  puts 'You must supply a customer_key' if !key
-  exit
+  desc 'gasstations', 'get gas stations for CITY'
+  def gasstations(city)
+    call_api('gasstations', city)
+  end
+
+  desc 'parkingspots', 'get parking spots for CITY'
+  def parkingspots(city)
+    call_api('parkingspots', city)
+  end
+
+  private 
+  # this is set using an environment variable
+  def require_key
+    unless ENV['CONSUMER_KEY']
+      'Set environment variable CONSUMER_KEY to your Car2Go consumer key'
+      exit
+    end
+  end
+
+  def call_api(endpoint, city=nil)
+    pretty_print (Caruby2go.new(ENV['CONSUMER_KEY'], city).send("get_#{endpoint}".to_sym))
+  end
+
+  def pretty_print(records)
+    records.each { |record| 
+      puts RECORD_SEPARATOR
+      record.each {|k, v|
+        puts "#{k}:: #{v}"
+      }
+    }
+    puts RECORD_SEPARATOR
+  end
 end
 
-json = Caruby2go.new(key.chomp, location.chomp).get_vehicles
-puts json.class
-puts json
-# json.each { |vehicle| 
-#   puts '=============================================================='
-#   # puts Formatter.format_vehicle(json.to_json)
-#   puts json.to_json
-# }
-puts '=========================='
+Caruby2goScript.start(ARGV)

@@ -89,3 +89,4 @@ DEPENDENCIES
   rspec
   rspec-nc
   spy
+  thor
