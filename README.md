@@ -21,7 +21,8 @@ Or install it yourself as:
     $ gem install caruby2go
 
 ## Packaging
-```rake build
+```
+rake build
 ```
 
 build.sh in this project's root will run these commands for you.
