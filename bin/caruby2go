@@ -1,9 +1,13 @@
+#!/usr/bin/env ruby
+
 require 'thor'
 require_relative '../lib/caruby2go.rb'
 require 'pry'
 
+##
+# Script for running the gem from the command line
 class Caruby2goScript < Thor
-  RECORD_SEPARATOR = '=============================================================='
+  RECORD_SEPARATOR = '========================================================='
   desc 'vehicles CITY', 'get vehicles for CITY'
   def vehicles(city)
     call_api(city)
@@ -24,28 +28,31 @@ class Caruby2goScript < Thor
     call_api(city)
   end
 
-  private 
+  private
+
   # this is set using an environment variable
   def require_key
-    unless ENV['CONSUMER_KEY']
-      puts 'Set environment variable CONSUMER_KEY to your Car2Go consumer key.  For example,'
-      puts '    $ CONSUMER_KEY=mykey ruby bin/caruby2go v twincities'
-      exit
-    end
+    return if ENV['CONSUMER_KEY']
+    puts 'Set environment variable CONSUMER_KEY to your Car2Go consumer key.'
+    puts 'For example:'
+    puts '    $ CONSUMER_KEY=mykey bin/caruby2go v twincities'
+    false
   end
 
-  def call_api(city=nil)
+  def call_api(city = nil)
     require_key
-    pretty_print (Caruby2go.new(ENV['CONSUMER_KEY'], city).send("get_#{caller_locations(1,1)[0].label}".to_sym))
+    caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], city)
+    results = caruby2go.send("#{caller_locations(1, 1)[0].label}".to_sym)
+    pretty_print results
   end
 
   def pretty_print(records)
-    records.each { |record| 
+    records.each do |record|
       puts RECORD_SEPARATOR
-      record.each {|k, v|
+      record.each do |k, v|
         puts "#{k}:: #{v}"
-      }
-    }
+      end
+    end
     puts RECORD_SEPARATOR
   end
 end

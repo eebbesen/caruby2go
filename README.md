@@ -24,16 +24,16 @@ Or install it yourself as:
 
     $ rake build
 
-build.sh in this project's root will run these commands for you.
+build.sh (in this project's root) will build and install the gem locally.
 
 ## Local usage
 The script requires you to set the CONSUMER_KEY environment variable to your Car2Go consumer key
 
     $ set CONSUMER_KEY=<your_consumer_key>
-    $ ruby bin/caruby2go p kobenhavn
+    $ bin/caruby2go p kobenhavn
 or 
 
-    $ CONSUMER_KEY=<your_consumer_key> ruby bin/caruby2go p kobenhavn
+    $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
 
 
 ## Contributing
