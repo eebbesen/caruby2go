@@ -2,7 +2,7 @@
 
 caruby2go is a gem that exposes [the car2go api](https://code.google.com/p/car2go/wiki/index_v2_1).
 
-For most operations you need to [get your own consumer key from car2go](https://www.car2go.com/en/austin/car2go-apps/).
+For all operations you need to [get your own consumer key from car2go](https://www.car2go.com/en/austin/car2go-apps/).
 
 ## Installation
 
@@ -21,15 +21,20 @@ Or install it yourself as:
     $ gem install caruby2go
 
 ## Packaging
-```
-rake build
-```
+
+    $ rake build
 
 build.sh in this project's root will run these commands for you.
 
-## Usage
+## Local usage
+The script requires you to set the CONSUMER_KEY environment variable to your Car2Go consumer key
 
-$ bin/caruby2go <your_car2go_consumer_key> <location_for_which_you_want_data>
+    $ set CONSUMER_KEY=<your_consumer_key>
+    $ ruby bin/caruby2go p kobenhavn
+or 
+
+    $ CONSUMER_KEY=<your_consumer_key> ruby bin/caruby2go p kobenhavn
+
 
 ## Contributing
 
