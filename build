@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+build_return = `gem build caruby2go.gemspec`
+
+gemfile = ''
+lines = build_return.split "\n"
+puts lines
+lines.each do |line|
+  gemfile = line.split(' ')[1] if line.start_with? '  File: '
+end
+
+puts `gem install caruby2go`
+
+FileUtils.mv(gemfile, './pkg/')
