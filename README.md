@@ -35,6 +35,9 @@ or
 
     $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
 
+## Reference implementation
+[Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access Car2Go's API to identify cars you can refuel for free minutes.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/caruby2go/fork )
