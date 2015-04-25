@@ -2,7 +2,6 @@
 
 require 'thor'
 require_relative '../lib/caruby2go.rb'
-require 'pry'
 
 ##
 # Script for running the gem from the command line
