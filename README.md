@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/eebbesen/caruby2go.svg?style=shield)](https://circleci.com/gh/eebbesen/caruby2go)
+
 # caruby2go
 
 caruby2go is a gem that exposes [the car2go api](https://code.google.com/p/car2go/wiki/index_v2_1).
@@ -27,7 +29,7 @@ Or install it yourself as:
 build (in this project's root) will build and install the gem locally.
 
 ## Local usage
-The script requires you to set the CONSUMER_KEY environment variable to your car2Go consumer key
+The script requires you to set the CONSUMER_KEY environment variable to your car2go consumer key
 
     $ set CONSUMER_KEY=<your_consumer_key>
     $ bin/caruby2go p kobenhavn
@@ -36,7 +38,7 @@ or
     $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
 
 ## Reference implementation
-[Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access Car2Go's API to identify cars you can refuel for free minutes.
+[Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access car2go's API to identify cars you can refuel for free minutes.
 
 ## Contributing
 
