@@ -26,16 +26,17 @@ Or install it yourself as:
 
     $ rake build
 
-build (in this project's root) will build and install the gem locally.
+Executing `build` (in this project's root) will build and install the gem locally.
 
 ## Local usage
-The script requires you to set the CONSUMER_KEY environment variable to your car2go consumer key
+The script requires you to set the `CONSUMER_KEY` environment variable to your car2go consumer key
 
     $ set CONSUMER_KEY=<your_consumer_key>
     $ bin/caruby2go p kobenhavn
 or 
 
     $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
+or set it for the application user via a profile file.
 
 ## Reference implementation
 [Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access car2go's API to identify cars you can refuel for free minutes.
