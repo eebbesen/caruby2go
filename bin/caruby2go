@@ -7,6 +7,9 @@ require_relative '../lib/caruby2go.rb'
 # Script for running the gem from the command line
 class Caruby2goScript < Thor
   RECORD_SEPARATOR = '========================================================='
+
+  class_option :raw, :type => :boolean, :desc => "Print the raw JSON from Car2Go"
+
   desc 'vehicles CITY', 'get vehicles for CITY'
   def vehicles(city)
     call_api(city)
@@ -42,17 +45,21 @@ class Caruby2goScript < Thor
     require_key
     caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], city)
     results = caruby2go.send("#{caller_locations(1, 1)[0].label}".to_sym)
-    pretty_print results
+    print results
   end
 
-  def pretty_print(records)
-    records.each do |record|
-      puts RECORD_SEPARATOR
-      record.each do |k, v|
-        puts "#{k}:: #{v}"
+  def print(records)
+    if options[:raw]
+      puts records
+    else
+      records.each do |record|
+        puts RECORD_SEPARATOR
+        record.each do |k, v|
+          puts "#{k}:: #{v}"
+        end
       end
+      puts RECORD_SEPARATOR
     end
-    puts RECORD_SEPARATOR
   end
 end
 
