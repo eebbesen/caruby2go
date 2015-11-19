@@ -1,6 +1,7 @@
 require 'caruby2go/version'
 require 'open-uri'
 require 'json'
+require 'byebug'
 
 ##
 # Wraps the Car2Go public API endpoints
@@ -31,8 +32,8 @@ class Caruby2go
   private
 
   def build_uri(endpoint)
-    loc_part = @location ? "loc=#{@location}" : nil
-    "#{CAR2GO_URI}/#{endpoint}?#{loc_part}&oauth_consumer_key=#{@consumer_key}&format=json"
+    loc_part = @location ? "&loc=#{@location}" : nil
+    "#{CAR2GO_URI}/#{endpoint}?oauth_consumer_key=#{@consumer_key}#{loc_part}&format=json"
   end
 
   def issue_get(uri, json_header = 'placemarks')

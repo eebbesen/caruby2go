@@ -12,13 +12,13 @@ class TestCaruby2go < Minitest::Test
   end
 
   def test_build_uri_with_location
-    assert_equal 'https://www.car2go.com/api/v2.1/endpt?loc=MPLS&oauth_consumer_key=testkey&format=json',
+    assert_equal 'https://www.car2go.com/api/v2.1/endpt?oauth_consumer_key=testkey&loc=MPLS&format=json',
                  @caruby2go.send(:build_uri, 'endpt')
   end
 
   def test_build_uri_without_location
     @caruby2go = Caruby2go.new('testkey')
-    assert_equal 'https://www.car2go.com/api/v2.1/endpt?&oauth_consumer_key=testkey&format=json',
+    assert_equal 'https://www.car2go.com/api/v2.1/endpt?oauth_consumer_key=testkey&format=json',
                  @caruby2go.send(:build_uri, 'endpt')
   end
 

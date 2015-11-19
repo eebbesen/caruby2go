@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-remote', '~> 0.1'
   spec.add_development_dependency 'pry-nav', '~> 0.2'
   spec.add_development_dependency 'spy', '~> 0.4'
+  spec.add_development_dependency 'byebug'
 end
