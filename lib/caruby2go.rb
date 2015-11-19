@@ -1,7 +1,6 @@
 require 'caruby2go/version'
 require 'open-uri'
 require 'json'
-require 'byebug'
 
 ##
 # Wraps the Car2Go public API endpoints
@@ -40,7 +39,6 @@ class Caruby2go
     data = open(uri).read
     JSON.parse(data)[json_header]
   rescue OpenURI::HTTPError => e
-    # byebug
     raise "Car2Go probably doesn't like the city you entered: #{@location}" if '400 Bad Request' == e.message
     raise e
   end

@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require './lib/caruby2go'
 require 'spy/integration'
+require 'byebug'
 
 class TestCaruby2go < Minitest::Test
   def setup
