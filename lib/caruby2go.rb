@@ -39,5 +39,9 @@ class Caruby2go
   def issue_get(uri, json_header = 'placemarks')
     data = open(uri).read
     JSON.parse(data)[json_header]
+  rescue OpenURI::HTTPError => e
+    # byebug
+    raise "Car2Go probably doesn't like the city you entered: #{@location}" if '400 Bad Request' == e.message
+    raise e
   end
 end
