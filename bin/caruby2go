@@ -37,7 +37,7 @@ class Caruby2goScript < Thor
     return if ENV['CONSUMER_KEY']
     puts 'Set environment variable CONSUMER_KEY to your Car2Go consumer key.'
     puts 'For example:'
-    puts '    $ CONSUMER_KEY=mykey bin/caruby2go v twincities'
+    puts '    $ CONSUMER_KEY=yourkey bin/caruby2go v twincities'
     false
   end
 
