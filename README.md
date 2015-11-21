@@ -28,6 +28,10 @@ Or install it yourself as:
 
 Executing `build` (in this project's root) will build and install the gem locally.
 
+## Publishing
+
+    $ gem push pkg/caruby2go-<version>.gem
+
 ## Local usage
 The script requires you to set the `CONSUMER_KEY` environment variable to your car2go consumer key
 
