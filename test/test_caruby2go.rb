@@ -77,11 +77,26 @@ class TestCaruby2go < Minitest::Test
       raise OpenURI::HTTPError.new('400 Bad Request', nil)
     end
 
-    assert_raises RuntimeError do
+    error = assert_raises InvalidLocationError do
       OpenURI.stub :open_uri, mock_open_uri do
         @caruby2go.send(:issue_get, 'http://example.com')
       end
     end
+    assert_equal "Car2Go probably doesn't like the city you entered: MPLS", error.message
+  end
+
+  def test_issue_get_other_than_400
+    mock_open_uri = Minitest::Mock.new
+    mock_open_uri.expect(:read, nil) do
+      raise OpenURI::HTTPError.new('401 Unauthorized', nil)
+    end
+
+    error = assert_raises OpenURI::HTTPError do
+      OpenURI.stub :open_uri, mock_open_uri do
+        @caruby2go.send(:issue_get, 'http://example.com')
+      end
+    end
+    assert_equal '401 Unauthorized', error.message
   end
 
   private

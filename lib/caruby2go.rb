@@ -1,9 +1,10 @@
 require 'caruby2go/version'
+require 'invalid_location_error'
 require 'open-uri'
 require 'json'
 
 ##
-# Wraps the Car2Go public API endpoints
+# Wraps the Car2Go public API
 class Caruby2go
   CAR2GO_URI = 'https://www.car2go.com/api/v2.1'
 
@@ -39,7 +40,7 @@ class Caruby2go
     data = open(uri).read
     JSON.parse(data)[json_header]
   rescue OpenURI::HTTPError => e
-    raise "Car2Go probably doesn't like the city you entered: #{@location}" if '400 Bad Request' == e.message
+    raise InvalidLocationError.new(@location) if '400 Bad Request' == e.message
     raise e
   end
 end
