@@ -43,7 +43,11 @@ or
 or set it for the application user via a profile file.
 
 ## Finding a city name
-You will see `400 Bad Request (OpenURI::HTTPError)` if you enter an invalid city.  I was unable to locate a list of valid cities (the car2go locations endpoint does not provied that information) but have compiled a list of my own which you can view at doc/cities.txt.
+Use the `locationName` value (spaces removed) from the following call
+
+    $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go l
+
+[Freerider](https://github.com/eebbesen/freerider) has a script that will return an alphabetized, formatted list of all valid locations, too.
 
 ## Reference implementation
 [Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access car2go's API to identify cars you can refuel for free minutes.
