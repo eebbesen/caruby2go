@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    caruby2go (0.0.4)
+    caruby2go (0.1.0)
       thor (~> 0.19.1)
 
 GEM

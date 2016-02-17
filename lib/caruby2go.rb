@@ -8,9 +8,10 @@ require 'json'
 class Caruby2go
   CAR2GO_URI = 'https://www.car2go.com/api/v2.1'
 
-  def initialize(consumer_key, location = nil)
+  def initialize(consumer_key, location=nil, uri=CAR2GO_URI)
     @consumer_key = consumer_key
     @location = location
+    @uri = uri
   end
 
   def gasstations # placemarks
@@ -33,7 +34,7 @@ class Caruby2go
 
   def build_uri(endpoint)
     loc_part = @location ? "&loc=#{@location}" : nil
-    "#{CAR2GO_URI}/#{endpoint}?oauth_consumer_key=#{@consumer_key}#{loc_part}&format=json"
+    "#{@uri}/#{endpoint}?oauth_consumer_key=#{@consumer_key}#{loc_part}&format=json"
   end
 
   def issue_get(uri, json_header = 'placemarks')
@@ -42,5 +43,9 @@ class Caruby2go
   rescue OpenURI::HTTPError => e
     raise InvalidLocationError.new(@location) if '400 Bad Request' == e.message
     raise e
+  end
+
+  def uri
+    @uri
   end
 end

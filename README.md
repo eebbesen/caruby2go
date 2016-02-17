@@ -32,25 +32,35 @@ Executing `build` (in this project's root) will build and install the gem locall
 
     $ gem push pkg/caruby2go-<version>.gem
 
-## Local usage
-The script requires you to set the `CONSUMER_KEY` environment variable to your car2go consumer key
+## Usage
+caruby2go requires you to have a car2go consumer key
 
-    $ set CONSUMER_KEY=<your_consumer_key>
-    $ bin/caruby2go p kobenhavn
-or 
+### In your project
+
+    caruby2go_client = Caruby2go.new(ENV['CAR2GO_CONSUMER_KEY'], 'twincities')
+    caruby2go_client.vehicles
+
+By default [the Car2Go API URL](https://www.car2go.com/api/v2.1) is used, but you have the option to pass in an alternate URL.
+I added this option so I could use Runscape to monitor API calls.
+
+     caruby2go_client = Caruby2go.new(ENV['CAR2GO_CONSUMER_KEY'], 'twincities', 'https://www-car2go-com-eeeeeeee.runscope.net/api/v2.1')
+
+### Included script
+#### Find car locations for a city
 
     $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
-or set it for the application user via a profile file.
 
-## Finding a city name
+#### Finding a city name
 Use the `locationName` value (spaces removed) from the following call
 
     $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go l
 
 [Freerider](https://github.com/eebbesen/freerider) has a script that will return an alphabetized, formatted list of all valid locations, too.
 
-## Reference implementation
-[Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access car2go's API to identify cars you can refuel for free minutes.
+## Reference implementations
+* bin/caruby2go in this project
+
+* [Freerider](https://github.com/eebbesen/freerider) is a gem which uses caruby2go to access car2go's API to track Car2Go vehicle movement.
 
 ## Contributing
 
