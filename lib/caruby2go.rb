@@ -8,7 +8,7 @@ require 'json'
 class Caruby2go
   CAR2GO_URI = 'https://www.car2go.com/api/v2.1'
 
-  def initialize(consumer_key, location = nil, uri=CAR2GO_URI)
+  def initialize(consumer_key, location=nil, uri=CAR2GO_URI)
     @consumer_key = consumer_key
     @location = location
     @uri = uri

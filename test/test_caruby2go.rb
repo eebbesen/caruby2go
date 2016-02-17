@@ -5,7 +5,7 @@ require 'byebug'
 
 class TestCaruby2go < Minitest::Test
   def setup
-    @caruby2go = Caruby2go.new('testkey', 'MPLS', 'https://www.justabaseuri.com')
+    @caruby2go = Caruby2go.new('testkey', 'MPLS', 'https://www.justabaseuri.com2go')
   end
 
   def test_initialize
