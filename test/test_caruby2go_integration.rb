@@ -23,7 +23,7 @@ class TestCaruby2goIngegration < Minitest::Test
   end
 
   def test_get_gasstations
-    @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], 'kobenhavn')
+    @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], 'berlin')
     gasstations_json = @caruby2go.gasstations
     refute gasstations_json.first['coordinates'].empty?
   end
@@ -37,7 +37,7 @@ class TestCaruby2goIngegration < Minitest::Test
     ignored_cities = %w(chongqing koln cologne dusseldorf eugene honolulu
                         milan southbay)
     cities = %w(amsterdam austin berlin calgary columbus denver firenze
-                frankfurt hamburg kobenhavn losangeles miami montreal muenchen
+                frankfurt hamburg miami montreal muenchen
                 newyorkcity portland rheinland roma sandiego seattle stockholm
                 stuttgart torino toronto twincities vancouver washingtondc
                 wien)
