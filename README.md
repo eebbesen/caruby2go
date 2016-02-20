@@ -48,7 +48,7 @@ I added this option so I could use Runscape to monitor API calls.
 ### Included script
 #### Find car locations for a city
 
-    $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p kobenhavn
+    $ CONSUMER_KEY=<your_consumer_key> bin/caruby2go p twincities
 
 #### Finding a city name
 Use the `locationName` value (spaces removed) from the following call
