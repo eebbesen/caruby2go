@@ -7,6 +7,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    builder (3.2.2)
     byebug (6.0.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
@@ -66,6 +67,9 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    rspec_junit_formatter (0.2.2)
+      builder (< 4)
+      rspec-core (>= 2, < 4, != 2.12.0)
     shellany (0.0.1)
     slop (3.6.0)
     spy (0.4.1)
@@ -88,6 +92,7 @@ DEPENDENCIES
   pry-remote (~> 0.1)
   rake (~> 10.0)
   rspec (~> 3.2)
+  rspec_junit_formatter (= 0.2.2)
   spy (~> 0.4)
 
 BUNDLED WITH
