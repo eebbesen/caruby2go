@@ -20,13 +20,18 @@ class Caruby2goScript < Thor
     call_api
   end
 
-  desc 'gasstations', 'get gas stations for CITY'
+  desc 'gasstations CITY', 'get gas stations for CITY'
   def gasstations(city)
     call_api(city)
   end
 
-  desc 'parkingspots', 'get parking spots for CITY'
+  desc 'parkingspots CITY', 'get parking spots for CITY'
   def parkingspots(city)
+    call_api(city)
+  end
+
+  desc 'operationareas CITY', 'get operating areas'
+  def operationareas(city)
     call_api(city)
   end
 
