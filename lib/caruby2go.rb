@@ -29,6 +29,10 @@ class Caruby2go
   def vehicles # placemarks
     issue_get(build_uri('vehicles'))
   end
+  
+  def operationareas # placemarks
+    issue_get(build_uri('operationareas'))
+  end
 
   private
 
