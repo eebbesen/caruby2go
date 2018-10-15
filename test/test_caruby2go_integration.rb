@@ -4,15 +4,17 @@ require 'spy/integration'
 
 class TestCaruby2goIngegration < Minitest::Test
   def setup
-    @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], 'minneapolis')
+    @caruby2go = Caruby2go.new(ENV['CONSUMER_KEY'], 'berlin')
   end
 
   def test_get_vehicles
+    skip('consumer key expired and new ones not forthcoming')
     vehicles_json = @caruby2go.vehicles
     refute vehicles_json.first['address'].empty?
   end
 
   def test_get_locations
+    skip('consumer key expired and new ones not forthcoming')
     locations_json = @caruby2go.locations
     refute locations_json.first['locationName'].empty?
   end
